@@ -12,7 +12,7 @@ impl AstarSnsContract {
         message: String,
         message_list_id: u128,
         sender_id: AccountId,
-        createinsertd_time: String,
+        created_time: String,
     ) {
         // メッセージリストの取得
         let mut message_list: Vec<Message> = self

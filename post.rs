@@ -1,6 +1,4 @@
 use crate::metadata::*;
-use alloc::sync::Arc;
-use alloc::sync::Arc;
 use ink_env::AccountId;
 use ink_prelude::string::String;
 use ink_prelude::string::ToString;
@@ -42,7 +40,7 @@ impl AstarSnsContract {
         let mut profile: Profile = self.profile_map.get(&account_id).unwrap();
 
         // 上記での投稿IDをプロフィールに追加
-        profile.post_id_list.push(sel.post_map_counter);
+        profile.post_id_list.push(self.post_map_counter);
 
         // プロフィールのマッピングを上書き
         self.profile_map.insert(&account_id, &profile);
@@ -103,7 +101,7 @@ impl AstarSnsContract {
         } else {
             for n in (amount_index * (num - 1))..(amount_index * num) {
                 let post: Option<Post> =
-                    self.post_map.get(&post_id_list[(length - n - 1)] as usize);
+                    self.post_map.get(&post_id_list[(length - n - 1) as usize]);
                 if post.is_some() {
                     post_list.push(post.unwrap());
                 }

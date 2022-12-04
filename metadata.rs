@@ -5,6 +5,7 @@ use ink_storage::traits::{PackedLayout, SpreadLayout, StorageLayout};
 
 // 投稿用の構造体
 #[derive(Debug, Clone, scale::Encode, scale::Decode, SpreadLayout, PartialEq, PackedLayout)]
+#[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
 pub struct Post {
     pub name: String,
     pub user_id: AccountId,
@@ -36,5 +37,5 @@ pub struct Profile {
 pub struct Message {
     pub message: String,
     pub sender_id: AccountId,
-    created_time: String,
+    pub created_time: String,
 }
