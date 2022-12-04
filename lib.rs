@@ -14,17 +14,13 @@ mod astar_sns_contract {
     pub struct AstarSnsContract {
         /// Stores a single `bool` value on the storage.
         value: bool,
-        number: u64,
     }
 
     impl AstarSnsContract {
         /// Constructor that initializes the `bool` value to the given `init_value`.
         #[ink(constructor)]
-        pub fn new(init_value: bool, init_number: u64) -> Self {
-            Self {
-                value: init_value,
-                number: init_number,
-            }
+        pub fn new(init_value: bool) -> Self {
+            Self { value: init_value }
         }
 
         /// Constructor that initializes the `bool` value to `false`.
@@ -32,7 +28,7 @@ mod astar_sns_contract {
         /// Constructors can delegate to other constructors.
         #[ink(constructor)]
         pub fn default() -> Self {
-            Self::new(Default::default(), Default::default())
+            Self::new(Default::default())
         }
 
         /// A message that can be called on instantiated contracts.
@@ -43,22 +39,10 @@ mod astar_sns_contract {
             self.value = !self.value;
         }
 
-        /// add the value to the number field
-        #[ink(message)]
-        pub fn add(&mut self, value: u64) {
-            self.number += value;
-        }
-
         /// Simply returns the current value of our `bool`.
         #[ink(message)]
         pub fn get(&self) -> bool {
             self.value
-        }
-
-        /// コントラクトのnumberを取得します
-        #[ink(message)]
-        pub fn get_number(&self) -> u64 {
-            self.number
         }
     }
 
@@ -83,7 +67,7 @@ mod astar_sns_contract {
         /// We test a simple use case of our contract.
         #[ink::test]
         fn it_works() {
-            let mut astar_sns_contract = AstarSnsContract::new(false, 0);
+            let mut astar_sns_contract = AstarSnsContract::new(false);
             assert_eq!(astar_sns_contract.get(), false);
             astar_sns_contract.flip();
             assert_eq!(astar_sns_contract.get(), true);
