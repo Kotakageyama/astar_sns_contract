@@ -38,7 +38,16 @@ impl AstarSnsContract {
 
     // プロフィール情報
     pub fn get_profile_info_fn(&self, account_id: AccountId) -> Profile {
-        let profile: Profile = self.profile_map.get(&account_id).unwrap();
+        let profile: Profile = self.profile_map.get(&account_id).unwrap_or(Profile {
+            following_list: Vec::new(),
+            follower_list: Vec::new(),
+            friend_list: Vec::new(),
+            user_id: account_id,
+            name: None,
+            img_url: None,
+            message_list_id_list: Vec::new(),
+            post_id_list: Vec::new(),
+        });
         profile
     }
 
