@@ -46,7 +46,7 @@ impl AstarSnsContract {
             followed_user_profile
                 .message_list_id_list
                 .push(self.message_list_map_counter);
-            followed_user_profile
+            following_user_profile
                 .message_list_id_list
                 .push(self.message_list_map_counter);
             following_user_profile.friend_list.push(followed_account_id);
