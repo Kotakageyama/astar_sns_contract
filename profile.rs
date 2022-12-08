@@ -51,7 +51,7 @@ impl AstarSnsContract {
         profile
     }
 
-    pub fn check_created_profile_fn(&mut self, account_id: AccountId) -> bool {
+    pub fn check_created_profile_fn(&self, account_id: AccountId) -> bool {
         let is_already_connected = self.profile_map.contains(&account_id);
         is_already_connected
     }

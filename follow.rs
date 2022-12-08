@@ -28,7 +28,7 @@ impl AstarSnsContract {
         // フォローされる側のフォロワーリストに自分が含まれていなければ追加
         if !followed_user_profile
             .follower_list
-            .contains(&followed_account_id)
+            .contains(&folloing_account_id)
         {
             followed_user_profile
                 .follower_list

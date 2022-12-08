@@ -151,7 +151,7 @@ mod astar_sns_contract {
 
         // プロフィール作成済みか確認する
         #[ink(message)]
-        pub fn check_created_profile(&mut self, account_id: AccountId) -> bool {
+        pub fn check_created_profile(&self, account_id: AccountId) -> bool {
             let is_already_connected: bool = self.check_created_profile_fn(account_id);
             is_already_connected
         }
