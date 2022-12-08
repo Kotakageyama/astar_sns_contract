@@ -28,7 +28,7 @@ impl AstarSnsContract {
         // フォローされる側のフォロワーリストに自分が含まれていなければ追加
         if !followed_user_profile
             .follower_list
-            .contains(&following_account_id)
+            .contains(&followed_account_id)
         {
             followed_user_profile
                 .follower_list
@@ -77,6 +77,7 @@ impl AstarSnsContract {
             }
         }
 
+        // それぞれのプロフィール情報を上書き
         self.profile_map
             .insert(&following_account_id, &following_user_profile);
         self.profile_map
